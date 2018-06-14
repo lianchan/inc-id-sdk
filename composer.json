@@ -1,0 +1,24 @@
+{
+  "name": "shchenjianhua/IncIdSdk",
+  "description": "influencechain block user center for this open and beautiful world",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "shchenjianhua",
+      "email": "unnnnn@foxmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+    "php": ">=5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "IncIdSdk\\": "src/"
+    }
+  }
+}
