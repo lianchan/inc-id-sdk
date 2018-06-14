@@ -1,7 +1,7 @@
 {
   "name": "shchenjianhua/incid_sdk",
   "description": "influencechain block user center for this open and beautiful world",
-  "type": "project",
+  "type": "library",
   "license": "MIT",
   "authors": [
     {
