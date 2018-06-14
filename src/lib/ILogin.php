@@ -5,10 +5,10 @@
  * @date 2018年06月13日11:51:28
  */
 
-namespace incid_sdk\src\lib;
+namespace Incidsdk\Src\Lib;
 use function dirname;
-use incid_sdk\src\lib\Http;
-use incid_sdk\src\lib\Logs;
+use Incidsdk\Src\Lib\Http;
+use Incidsdk\Src\Lib\Logs;
 use const JSON_UNESCAPED_UNICODE;
 use function file_get_contents;
 use function file_put_contents;
@@ -138,7 +138,7 @@ Class ILogin
             '&grant_type=authorization_code' .
             '&code=' . $code .
             '&scope=' . $this->scope;
-        $reqResult = \incid_sdk\src\lib\Http::__request($tokenUrl, [], false, 30, []);
+        $reqResult = \Incidsdk\Src\Lib\Http::__request($tokenUrl, [], false, 30, []);
         $tokenArr = json_decode($reqResult, true);
         if (40064 == $tokenArr['status']) {
             //重新授权
@@ -165,7 +165,7 @@ Class ILogin
             '&mode=authorization_code' .
             '&scope=' . $this->scope .
             '&refresh_token=' . $refreshToken;
-        $reqResult = \incid_sdk\src\lib\Http::__request($refreshTokenUrl, [], false, 30, []);
+        $reqResult = \Incidsdk\Src\Lib\Http::__request($refreshTokenUrl, [], false, 30, []);
         $tokenArr = json_decode($reqResult, true);
         //如果 refresh_token 也失效,重新授权
         if (400519 == $tokenArr['status']) {
@@ -189,7 +189,7 @@ Class ILogin
             'access_token=' . $access_token .
             '&open_uid=' . $open_uid;
         //var_dump($infoUrl);exit;
-        $reqResult = \incid_sdk\src\lib\Http::__request($infoUrl, [], false, 30, []);
+        $reqResult = \Incidsdk\Src\Lib\Http::__request($infoUrl, [], false, 30, []);
         return json_decode($reqResult, true);
     }
 
