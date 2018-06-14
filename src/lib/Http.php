@@ -7,7 +7,7 @@
  * Time: 下午2:29
  */
 
-namespace IncIdSdk\src\lib;
+namespace incid_sdk\src\lib;
 Class Http
 {
     public static function __request($url, $params = [], $is_post = false, $time_out = 30, $header = []):string

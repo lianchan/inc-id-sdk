@@ -5,7 +5,7 @@
  * @date 2018年06月13日11:51:28
  */
 
-namespace IncIdSdk\src\lib;
+namespace incid_sdk\src\lib;
 use function dirname;
 use IncIdSdk\src\lib\Http;
 use IncIdSdk\src\lib\Logs;
@@ -138,7 +138,7 @@ Class ILogin
             '&grant_type=authorization_code' .
             '&code=' . $code .
             '&scope=' . $this->scope;
-        $reqResult = \IncIdSdk\src\lib\Http::__request($tokenUrl, [], false, 30, []);
+        $reqResult = \incid_sdk\src\lib\Http::__request($tokenUrl, [], false, 30, []);
         $tokenArr = json_decode($reqResult, true);
         if (40064 == $tokenArr['status']) {
             //重新授权
@@ -165,7 +165,7 @@ Class ILogin
             '&mode=authorization_code' .
             '&scope=' . $this->scope .
             '&refresh_token=' . $refreshToken;
-        $reqResult = \IncIdSdk\src\lib\Http::__request($refreshTokenUrl, [], false, 30, []);
+        $reqResult = \incid_sdk\src\lib\Http::__request($refreshTokenUrl, [], false, 30, []);
         $tokenArr = json_decode($reqResult, true);
         //如果 refresh_token 也失效,重新授权
         if (400519 == $tokenArr['status']) {
@@ -189,7 +189,7 @@ Class ILogin
             'access_token=' . $access_token .
             '&open_uid=' . $open_uid;
         //var_dump($infoUrl);exit;
-        $reqResult = \IncIdSdk\src\lib\Http::__request($infoUrl, [], false, 30, []);
+        $reqResult = \incid_sdk\src\lib\Http::__request($infoUrl, [], false, 30, []);
         return json_decode($reqResult, true);
     }
 

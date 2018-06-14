@@ -6,7 +6,7 @@
  * Time: 上午11:56
  */
 
-namespace IncIdSdk\src\lib;
+namespace incid_sdk\src\lib;
 
 use const FILE_APPEND;
 use function file_put_contents;

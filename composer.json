@@ -1,5 +1,5 @@
 {
-  "name": "shchenjianhua/IncIdSdk",
+  "name": "shchenjianhua/incid_sdk",
   "description": "influencechain block user center for this open and beautiful world",
   "type": "project",
   "license": "MIT",
@@ -18,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "IncIdSdk\\": "src/"
+      "incid-sdk\\": "src/"
     }
   }
 }

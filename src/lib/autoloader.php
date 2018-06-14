@@ -6,7 +6,7 @@
  * Time: 下午8:06
  */
 
-namespace IncIdSdk\src\lib;
+namespace incid_sdk\src\lib;
 $config = include 'Config.php';
 
 class autoloader
