@@ -7,8 +7,8 @@
 
 namespace incid_sdk\src\lib;
 use function dirname;
-use IncIdSdk\src\lib\Http;
-use IncIdSdk\src\lib\Logs;
+use incid_sdk\src\lib\Http;
+use incid_sdk\src\lib\Logs;
 use const JSON_UNESCAPED_UNICODE;
 use function file_get_contents;
 use function file_put_contents;
