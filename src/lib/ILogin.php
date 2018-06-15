@@ -6,10 +6,9 @@
  */
 
 namespace Incidsdk\Src\Lib;
-use function dirname;
-use Incidsdk\Src\Lib\Http;
-use Incidsdk\Src\Lib\Logs;
+
 use const JSON_UNESCAPED_UNICODE;
+use function dirname;
 use function file_get_contents;
 use function file_put_contents;
 use function header;
@@ -18,7 +17,6 @@ use function json_encode;
 use function time;
 use function uniqid;
 use function var_dump;
-define('LIBDIR',dirname(__DIR__));
 
 Class ILogin
 {
@@ -39,7 +37,10 @@ Class ILogin
 
     public function __construct($config = [])
     {
-        $this->config = $config;
+        if (empty($config)) {
+            $config2 = \Incidsdk\Src\Lib\Config::Get();
+            $this->config = $config2;
+        }
         $this->setEnv($env = 'env_test');
         if (isset($config['appIdd']))
             $this->appId = $config['appId'];
@@ -86,7 +87,7 @@ Class ILogin
         }
         //请求 access_token
         //判断缓存的 access_token
-        $oldAccessToken = json_decode(file_get_contents(LIBDIR.'/data/access_token.json'), true);
+        $oldAccessToken = json_decode(file_get_contents(LIBDIR . '/data/access_token.json'), true);
         if (!isset($oldAccessToken['refresh_token'])) {
             //第一次缓存
             $tokenArr = $this->getAccessToken($code);
@@ -113,7 +114,7 @@ Class ILogin
         if ($access_token) {
             echo '授权成功, access_token 为 ' . $access_token . '<br/>';
         }
-        echo 'open_uid '.$open_uid.'access_token '.$access_token.'<br/>';
+        echo 'open_uid ' . $open_uid . 'access_token ' . $access_token . '<br/>';
         $userInfo = $this->getUserInfo($access_token, $open_uid);
         echo '<br/>';
         //var_dump($userInfo);
@@ -146,7 +147,7 @@ Class ILogin
         }
         //var_dump($tokenArr,'access_token first');
         $tokenArr['create_time'] = (time() + 5);
-        file_put_contents(LIBDIR.'/data/access_token.json', json_encode($tokenArr, JSON_UNESCAPED_UNICODE));
+        file_put_contents(LIBDIR . '/data/access_token.json', json_encode($tokenArr, JSON_UNESCAPED_UNICODE));
         return $tokenArr;
     }
 
@@ -174,7 +175,7 @@ Class ILogin
         }
         //var_dump($tokenArr,'refresh token first');
         $tokenArr['create_time'] = (time() + 5);
-        file_put_contents(LIBDIR.'/data/access_token.json', json_encode($tokenArr, JSON_UNESCAPED_UNICODE));
+        file_put_contents(LIBDIR . '/data/access_token.json', json_encode($tokenArr, JSON_UNESCAPED_UNICODE));
         return $tokenArr;
     }
 
@@ -185,7 +186,7 @@ Class ILogin
      */
     public function getUserInfo($access_token, $open_uid)
     {
-        $infoUrl = $this->config[$this->env]['api'].'/open/user/info_by_openuid?' .
+        $infoUrl = $this->config[$this->env]['api'] . '/open/user/info_by_openuid?' .
             'access_token=' . $access_token .
             '&open_uid=' . $open_uid;
         //var_dump($infoUrl);exit;
@@ -200,7 +201,7 @@ Class ILogin
      */
     public function idVerify()
     {
-        $url = $this->config[$this->env]['page'].'/#/home';
+        $url = $this->config[$this->env]['page'] . '/#/home';
         header("Location:$url");
     }
 }
