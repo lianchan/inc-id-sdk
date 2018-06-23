@@ -24,8 +24,8 @@ Class Config
                 'page' => 'http://106.14.114.102:5057'
             ],//开发环境,不要随便修改
             'env_product' => [
-                'api' => 'https://auth.incid.org',
-                'page' => 'https://www.incid.org'
+                'api' => 'https://auth.inex.exchange',
+                'page' => 'https://incid.inex.exchange/'
             ]//正式环境接口,不要随便修改
         ];
     }

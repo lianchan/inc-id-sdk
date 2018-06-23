@@ -15,4 +15,5 @@ use Incidsdk\Src\Lib\ILogin;
 autoloader::register();
 
 $au = new ILogin([]);
+$au->setEnv('env_product');
 $au->authorizeUrl();

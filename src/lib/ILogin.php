@@ -102,6 +102,7 @@ Class ILogin
                 $tokenArr = $this->refreshToken($oldAccessToken['refresh_token']);
                 $access_token = $tokenArr['access_token'];
                 $open_uid = $tokenArr['open_uid'];
+                //var_dump($tokenArr);exit;
 
             } else {
                 $access_token = $oldAccessToken['access_token'];
@@ -109,7 +110,6 @@ Class ILogin
 
             }
         }
-
         //获取用户信息
         if ($access_token) {
             echo '授权成功, access_token 为 ' . $access_token . '<br/>';
