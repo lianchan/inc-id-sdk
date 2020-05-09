@@ -8,12 +8,9 @@
 
 error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
-include '../src/lib/autoloader.php';
-//加载 test autoload/autoload.php
-use Incidsdk\Src\Lib\autoloader;
+include '../../../autoload.php';
+//加载 vendor/autoload.php
 use Incidsdk\Src\Lib\ILogin;
-autoloader::register();
 
 $au = new ILogin([]);
-$au->setEnv('env_product');
 $au->authorizeUrl();

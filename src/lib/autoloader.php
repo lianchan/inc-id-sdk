@@ -7,7 +7,6 @@
  */
 
 namespace Incidsdk\Src\Lib;
-$config = include 'Config.php';
 
 class autoloader
 {
